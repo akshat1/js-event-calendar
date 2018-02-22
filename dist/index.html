@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simian Calendar Demo</title>
+    <script src='./simian-calendar.js'></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('loaded');
+        SimianCalendar.render({
+          renderTarget: document.getElementById('demoDiv')
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <div id='demoDiv'></div>
+  </body>
+</html>

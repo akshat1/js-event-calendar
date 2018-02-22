@@ -1,0 +1,87 @@
+.simian-calendar {
+  @border-color: #D3D3D3;
+  @space-s: 1em;
+  @space-m: 1.5em;
+  @space-l: 3em;
+  
+  &-root {
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif; // TODO: Will be removed before shipping.
+    font-size: 1em;
+    min-height: 500px;
+    min-width: 500px;
+    border: 1px solid @border-color;
+    padding: @space-s;
+  }
+
+  &__nav {
+    flex: 0 0;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: @space-s;
+  }
+
+  &__month-selector, &__year-selector {
+    flex: 0 0;
+    margin-right: @space-s;
+  }
+
+  &__month {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    border: solid @border-color;
+    border-width: 1px 1px 0 1px;
+  }
+
+  &__week {
+    flex: 1 1;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid @border-color;
+  }
+
+  &__day-name-marker-container {
+    flex: 0 0;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid @border-color;
+  }
+
+  &__day {
+    flex: 1 1;
+    position: relative;;
+
+    + .simian-calendar__day {
+      border-left: 1px solid @border-color;
+    }
+
+    &--filler {
+      opacity: 0.3;
+      .simian-calendar__day-number {
+        display: none;
+      }
+    }
+  }
+
+  &__day-name-marker {
+    flex: 1 1;
+    text-align: center;
+    max-height: 1em;
+    padding: @space-s;
+
+    + .simian-calendar__day-name-marker {
+      border-left: 1px solid @border-color;
+    }
+  }
+
+  &__day-number {
+    background: orange;
+    padding: 1em;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
