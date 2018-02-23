@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "nyc mocha",
+    "clean": "rm dist/*.js",
     "build": "webpack",
     "watch": "webpack --watch",
     "start": "webpack-dev-server",
