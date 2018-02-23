@@ -17,6 +17,15 @@ module.exports = [
           { loader: "css-loader" },
           { loader: "less-loader" }
         ]
+      }, {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: path.resolve(__dirname, '.babelcache')
+          }
+        }
       }]
     },
     devtool: 'inline-source-map',

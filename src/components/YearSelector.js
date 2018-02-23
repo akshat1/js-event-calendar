@@ -1,7 +1,9 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const { Option } = require('./Option');
 
-function Years({minYear, maxYear, selectedYear}) {
+function YearSelector(props) {
+  this.props = props;
+  const {minYear, maxYear, selectedYear} = props;
   const options = [];
   for (let i = minYear; i <= maxYear; i++) {
     options.push(new Option({
@@ -13,13 +15,19 @@ function Years({minYear, maxYear, selectedYear}) {
 
   return hyperHTML.wire()`
     <div class='simian-calendar__year-selector'>
-      <select>
+      <select onchange=${this}>
         ${options}
       </select>
     </div>
   `;
 }
 
+YearSelector.prototype.handleEvent = function(evt) {
+  evt.type === 'change'
+  && typeof this.props.onChange === 'function'
+  && this.props.onChange(Number(evt.currentTarget.value));
+}
+
 module.exports = {
-  Years
+  YearSelector
 }

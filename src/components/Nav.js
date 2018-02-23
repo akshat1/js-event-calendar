@@ -1,25 +1,28 @@
 const hyperHTML = require('hyperhtml/cjs').default;
-const { Years } = require('./YearSelector');
-const { Months } = require('./MonthSelector');
+const { YearSelector } = require('./YearSelector');
+const { MonthSelector } = require('./MonthSelector');
 
 function Nav(props) {
   const {
-    selectedMonth,
-    selectedYear,
+    maxYear,
     minYear,
-    maxYear
+    onMonthChange,
+    onYearChange,
+    selectedMonth,
+    selectedYear
   } = props;
 
   const yearsProps = {
-    selectedYear,
+    maxYear,
     minYear,
-    maxYear
+    onChange: onYearChange,
+    selectedYear
   };
 
   return hyperHTML.wire()`
     <div class='simian-calendar__nav'>
-      ${new Months({ selectedMonth })}
-      ${new Years(yearsProps)}
+      ${new MonthSelector({ selectedMonth, onChange: onMonthChange })}
+      ${new YearSelector(yearsProps)}
     </div>
   `;
 }

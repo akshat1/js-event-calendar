@@ -1,12 +1,13 @@
 require('./style/main.less');
+const { hyper } = require('hyperhtml/cjs').default;
 const { Calendar } = require('./components/Calendar');
 
 function render(opts) {
   const {
     renderTarget
   } = opts;
-
-  renderTarget.appendChild(new Calendar());
+  
+  hyper(renderTarget)`${new Calendar()}`;
 }
 
 module.exports = {

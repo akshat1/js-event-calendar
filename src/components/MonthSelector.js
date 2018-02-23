@@ -1,11 +1,12 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const { Option } = require('./Option');
-const { noop } = require('../utils');
 
-function Months({ selectedMonth, onChange = noop }) {
+function MonthSelector(props) {
+  this.props = props;
+  const { selectedMonth } = props;
   return hyperHTML.wire()`
-    <div class='simian-calendar__month-selector' onChange=${onChange}>
-      <select>
+    <div class='simian-calendar__month-selector'>
+      <select onchange=${this}>
         ${new Option({ label: 'January', value: 0, selected: selectedMonth === 0 })}
         ${new Option({ label: 'February', value: 1, selected: selectedMonth === 1 })}
         ${new Option({ label: 'March', value: 2, selected: selectedMonth === 2 })}
@@ -23,6 +24,12 @@ function Months({ selectedMonth, onChange = noop }) {
   `;
 }
 
+MonthSelector.prototype.handleEvent = function(evt) {
+  evt.type === 'change'
+  && typeof this.props.onChange === 'function'
+  && this.props.onChange(Number(evt.currentTarget.value));
+}
+
 module.exports = {
-  Months
+  MonthSelector
 };
