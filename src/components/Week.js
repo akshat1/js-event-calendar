@@ -1,10 +1,6 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const { Day } = require('./Day');
-const {
-  getLastDayOfMonth,
-  getFirstDayOfMonth,
-  isDayFiller
-} = require('../utils/date');
+const { getFirstDayOfMonth } = require('../utils/date');
 /**
  * @param {Object} props -
  * @param {number} props.weekOfMonth - 0 to 4.
@@ -28,18 +24,11 @@ function Week(props = {}) {
       month,
       weekOfMonth,
       dayOfWeek: i,
-      dayOfMonth,
-      isFiller: isDayFiller({
-        dayOfMonth,
-        dayOfWeek: i,
-        weekOfMonth,
-        firstDayOfMonth,
-        lastDayOfMonth: getLastDayOfMonth(month, year)
-      })
+      dayOfMonth
     }));
   }
   return hyperHTML.wire(props)`
-    <div class="simian-calendar__week">
+    <div class="simian-calendar__week" data-week="${weekOfMonth}">
       ${days}
     </div>
   `;

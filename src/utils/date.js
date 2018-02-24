@@ -14,20 +14,12 @@ function getFirstDayOfMonth(month, year) {
   return (new Date(`${year}-${month + 1}-01`)).getDay();
 }
 
-function isDayFiller({dayOfMonth, dayOfWeek, weekOfMonth, firstDayOfMonth, lastDayOfMonth}) {
-  if (weekOfMonth === 0) {
-    return dayOfWeek < firstDayOfMonth;
-  }
-
-  if (dayOfMonth >= lastDayOfMonth) {
-    return true;
-  }
-
-  return false;
+function isDayFiller({ year, month, dayOfMonth }) {
+  return dayOfMonth < 0 || dayOfMonth >= getLastDayOfMonth(month, year);
 }
 
 module.exports = {
   getLastDayOfMonth,
   getFirstDayOfMonth,
-  isDayFiller
+  isDayFiller,
 };

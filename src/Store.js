@@ -19,7 +19,6 @@ Store.prototype._initialise = function _initialise() {
 
 Store.prototype.setState = function setState(newState) {
   const mergedState = { ...this.state, ...newState };
-  console.log('>>>', mergedState);
   this.state = mergedState;
   this.signalUpdate();
 }

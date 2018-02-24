@@ -52,17 +52,20 @@
 
   &__day {
     flex: 1 1;
-    position: relative;;
+    position: relative;
+    border: solid @border-color;
+    border-width: 0 1px 0 0;
 
-    + .simian-calendar__day {
-      border-left: 1px solid @border-color;
+    &:last-child {
+      border-width: 0;
     }
 
     &--filler {
-      opacity: 0.3;
-      .simian-calendar__day-number {
-        display: none;
-      }
+      visibility: hidden;
+    }
+
+    &--first-day {
+      border-width: 0 1px 0 1px;
     }
   }
 
@@ -78,8 +81,7 @@
   }
 
   &__day-number {
-    background: orange;
-    padding: 1em;
+    padding: 0.5em;
     position: absolute;
     top: 0;
     left: 0;

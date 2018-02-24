@@ -1,6 +1,5 @@
 const hyperHTML = require('hyperhtml/cjs').default;
 const { Week } = require('./Week');
-const { DayNameMarker } = require('./DayNameMarker');
 
 /**
  * @param {Object} props -
@@ -23,15 +22,15 @@ function Month(props = {}) {
     }));
 
   return hyperHTML.wire(props)`
-    <div class="simian-calendar__month">
+    <div class="simian-calendar__month" data-month="${month}">
       <div class="simian-calendar__day-name-marker-container">
-        ${new DayNameMarker({ dayOfWeek: 0 })}
-        ${new DayNameMarker({ dayOfWeek: 1 })}
-        ${new DayNameMarker({ dayOfWeek: 2 })}
-        ${new DayNameMarker({ dayOfWeek: 3 })}
-        ${new DayNameMarker({ dayOfWeek: 4 })}
-        ${new DayNameMarker({ dayOfWeek: 5 })}
-        ${new DayNameMarker({ dayOfWeek: 6 })}
+        <div class="simian-calendar__day-name-marker">Sun</div>
+        <div class="simian-calendar__day-name-marker">Mon</div>
+        <div class="simian-calendar__day-name-marker">Tue</div>
+        <div class="simian-calendar__day-name-marker">Wed</div>
+        <div class="simian-calendar__day-name-marker">Thu</div>
+        <div class="simian-calendar__day-name-marker">Fri</div>
+        <div class="simian-calendar__day-name-marker">Sat</div>
       </div>
       ${weeks}
     </div>
